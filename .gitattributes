@@ -1,0 +1,23 @@
+# Ensure consistent line endings and text normalization
+* text=auto
+
+# Treat all JS/TS/JSON/CSS/MD files as text
+*.js text
+*.jsx text
+*.ts text
+*.tsx text
+*.json text
+*.css text
+*.scss text
+*.md text
+*.html text
+*.yml text
+*.yaml text
+
+# Exclude build output from linguist stats
+/dist linguist-vendored
+
+# Mark lock files as text
+package-lock.json text
+yarn.lock text
+pnpm-lock.yaml text

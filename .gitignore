@@ -1,0 +1,37 @@
+
+# Node modules and build output
+node_modules/
+dist/
+dist-ssr/
+
+# Environment files
+.env*
+*.local
+
+# Logs and debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor and OS files
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Misc cache and coverage
+coverage/
+*.tsbuildinfo
+.cache/
+.parcel-cache/
+.nyc_output/
+*.lcov
+
+# Build analyzer and Storybook
+bundle-analyzer-report.html
+storybook-static/

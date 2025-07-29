@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 27%;
+
+    --muted: 215 20% 95%;
+    --muted-foreground: 215 15% 57%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    /* Weather-specific colors */
+    --sky-light: 199 89% 48%;
+    --sky-dark: 217 91% 60%;
+    --warm: 43 96% 56%;
+    --cool: 200 98% 39%;
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+
+    /* Gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(199 89% 48%), hsl(217 91% 60%));
+    --gradient-warm: linear-gradient(135deg, hsl(43 96% 56%), hsl(25 95% 53%));
+    --gradient-cool: linear-gradient(135deg, hsl(200 98% 39%), hsl(217 91% 60%));
+    --gradient-dawn: linear-gradient(135deg, hsl(25 95% 53%), hsl(43 96% 56%), hsl(199 89% 48%));
+    --gradient-night: linear-gradient(135deg, hsl(236 72% 79%), hsl(217 91% 60%), hsl(236 45% 15%));
+
+    /* Glass effects */
+    --glass-bg: hsla(0, 0%, 100%, 0.1);
+    --glass-border: hsla(0, 0%, 100%, 0.18);
+    --glass-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.1);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 28% 17%;
+    --foreground: 213 31% 91%;
+
+    --card: 215 25% 20%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 215 25% 20%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 215 28% 17%;
+
+    --secondary: 215 25% 23%;
+    --secondary-foreground: 213 31% 91%;
+
+    --muted: 215 25% 23%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 215 28% 17%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 213 31% 91%;
+
+    --border: 215 25% 23%;
+    --input: 215 25% 23%;
+    --ring: 199 89% 48%;
+
+    /* Dark mode weather colors */
+    --sky-light: 199 89% 48%;
+    --sky-dark: 217 91% 60%;
+    --warm: 43 96% 56%;
+    --cool: 200 98% 39%;
+
+    /* Dark gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(215 25% 20%), hsl(217 91% 60%));
+    --gradient-warm: linear-gradient(135deg, hsl(43 96% 56%), hsl(25 95% 53%));
+    --gradient-cool: linear-gradient(135deg, hsl(200 98% 39%), hsl(217 91% 60%));
+    --gradient-dawn: linear-gradient(135deg, hsl(25 95% 53%), hsl(43 96% 56%), hsl(199 89% 48%));
+    --gradient-night: linear-gradient(135deg, hsl(236 72% 79%), hsl(217 91% 60%), hsl(215 28% 17%));
+
+    /* Dark glass effects */
+    --glass-bg: hsla(215, 25%, 20%, 0.3);
+    --glass-border: hsla(213, 31%, 91%, 0.1);
+    --glass-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.3);
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overscroll-behavior: contain;
+  }
+
+  /* Ensure smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better touch targets for mobile */
+  @media (hover: none) and (pointer: coarse) {
+    button, 
+    [role="button"], 
+    input[type="button"], 
+    input[type="submit"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+    box-shadow: var(--glass-shadow);
+  }
+  
+  /* Enhanced glass effects with better shadows */
+  .glass-enhanced {
+    @apply backdrop-blur-lg bg-white/5 border border-white/20;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
+                0 2px 8px rgba(255, 255, 255, 0.1) inset;
+  }
+  
+  .gradient-sky {
+    background: var(--gradient-sky);
+  }
+  
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+  
+  .gradient-cool {
+    background: var(--gradient-cool);
+  }
+  
+  .gradient-dawn {
+    background: var(--gradient-dawn);
+  }
+  
+  .gradient-night {
+    background: var(--gradient-night);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Mobile-first responsive utilities */
+  .mobile-safe-area {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Landscape-specific fixes */
+  .landscape-container {
+    @apply landscape:min-h-screen landscape:overflow-x-hidden;
+  }
+  
+  .landscape-grid {
+    @apply landscape:grid-cols-2 landscape:gap-3;
+    /* Prevent overlapping in landscape mode */
+    min-height: 0;
+  }
+  
+  /* Prevent layout shifts and overlapping */
+  .layout-stable {
+    @apply min-h-0 min-w-0 overflow-hidden;
+  }
+  
+  .no-overlap {
+    @apply relative z-auto;
+    contain: layout style;
+  }
+
+  /* Enhanced focus states for accessibility */
+  .focus-enhanced:focus-visible {
+    @apply outline-none ring-2 ring-white/50 ring-offset-2 ring-offset-transparent;
+  }
+
+  /* Better scrollbar styling */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Loading states */
+  .loading-shimmer {
+    background: linear-gradient(90deg, 
+      rgba(255, 255, 255, 0.1) 25%, 
+      rgba(255, 255, 255, 0.2) 50%, 
+      rgba(255, 255, 255, 0.1) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-sm {
+    @apply text-sm md:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base md:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg md:text-xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl md:text-2xl;
+  }
+
+  /* Mobile portrait specific utilities */
+  @media (max-width: 768px) and (orientation: portrait) {
+    .mobile-portrait-stack {
+      @apply flex-col !important;
+    }
+    
+    .mobile-portrait-full {
+      @apply w-full !important;
+    }
+    
+    .mobile-portrait-hidden {
+      @apply hidden !important;
+    }
+  }
+
+  /* Better tap targets for mobile */
+  .tap-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  /* Improved contrast for better accessibility */
+  .high-contrast {
+    filter: contrast(1.2);
+  }
+
+  /* Layout utilities for dashboard */
+  .dashboard-grid {
+    @apply grid gap-4 md:gap-6;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    .dashboard-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  /* Touch-friendly hover states */
+  @media (hover: hover) and (pointer: fine) {
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
